@@ -17,6 +17,7 @@ def main():
             if event.type == pygame.QUIT:
                 return
         screen.fill((0, 0, 0))
+        player_unit.update(dt)
         player_unit.draw(screen)
         pygame.display.flip()
         FPS = clock.tick(60)
