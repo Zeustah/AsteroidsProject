@@ -32,8 +32,13 @@ def main():
         screen.fill((0, 0, 0))
         updatable.update(dt)
         for ast in asteroids:
-            if player_unit.collision(ast) is True:
+            if player_unit.collision(ast):
                 sys.exit("Game over!")
+        for ast in asteroids:
+            for shot in shots:
+                if shot.collision(ast):
+                    shot.kill()
+                    ast.kill()
         for draw in drawable:
             draw.draw(screen)
         pygame.display.flip()
