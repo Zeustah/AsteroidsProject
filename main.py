@@ -1,4 +1,5 @@
 import pygame
+import sys
 from asteroidfield import AsteroidField
 from constants import *
 from circleshape import CircleShape
@@ -27,6 +28,9 @@ def main():
                 return
         screen.fill((0, 0, 0))
         updatable.update(dt)
+        for ast in asteroids:
+            if player_unit.collision(ast) is True:
+                sys.exit("Game over!")
         for draw in drawable:
             draw.draw(screen)
         pygame.display.flip()
